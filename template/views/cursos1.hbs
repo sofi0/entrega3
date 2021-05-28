@@ -1,0 +1,72 @@
+{{>header}} 
+
+<div class="container-md">
+<form action="/delete" method="post">
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">ID</th>
+      <th scope="col">Curso</th>
+      <th scope="col">Duracion</th>
+      <th scope="col">Costo</th>
+      <th scope="col">Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each res}}
+
+    <tr>
+      <td><button type="submit" class="btn btn-dark" name="nombre" value="{{this._id}}">eliminar</button></td>
+      <td>{{this.id}}</td>
+      <td>{{this.nombre}}</td>
+      <td>{{this.duracion}}</td>
+      <td>{{this.costo}}</td>
+      <td>{{this.estado}}</td>
+    </tr>
+    {{/each}}
+
+  </tbody>
+</table>
+</form>
+</div>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+	               <h2>Crear Curso</h2>
+                 <form method="post" action="/crearcurso">
+                  <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"></span>
+                            <div class="col-md-8">
+                                <input id="id" name="id" type="int" placeholder="ID" class="form-control">
+                            </div>
+                        </div>
+                    <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"></span>
+                            <div class="col-md-8">
+                                <input id="nombreCurso" name="nombreCurso" type="text" placeholder="nombre curso" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"></span>
+                            <div class="col-md-8">
+                                <input id="duracion" name="duracion" type="int" placeholder="Duracion" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"></span>
+                            <div class="col-md-8">
+                                <input id="costoCurso" name="costoCurso" type="int" placeholder="costo" class="form-control">
+                            </div>
+                        </div>
+		                <input type="submit">
+                  </form>
+              </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{{>footer}}

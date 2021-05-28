@@ -1,0 +1,76 @@
+{{>header}}
+
+{{{mensaje}}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+                <form method="post" action="/registrar">
+                  <h3>Registro</h3>
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"></span>
+                            <div class="col-md-8">
+                                <input id="nombre" name="nombre" type="text" placeholder="Nombre completo" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"></span>
+                            <div class="col-md-8">
+                                <input id="cedula" name="cedula" type="int" placeholder="cedula" class="form-control">
+                            </div>
+                        </div>
+
+                         <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"></span>
+                            <div class="col-md-8">
+                                <input id="tel" name="tel" type="int" placeholder="telefono" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"></span>
+                            <div class="col-md-8">
+                                <input id="email" name="email" type="text" placeholder="Email" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"></span>
+                            <div class="col-md-8">
+                                <input id="usuario" name="usuario" type="text" placeholder="usuario" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"></span>
+                            <div class="col-md-8">
+                                <input id="contrasena" name="contrasena" type="password" placeholder="contraseña" class="form-control">
+                            </div>
+                        </div>
+
+                        <h3>Registrar en un curso</h3>
+
+                        <div class="form-group">
+                          <label for="state_id" class="control-label">curso</label>
+                                  <select class="form-control" name="idCurso">
+                                        {{#each cursosDisponibles}}
+                                            <option value='{{this._id}}'>{{this.nombre}}</option>
+                                        {{/each}}
+                                  </select>  
+                        </div>
+
+                        <div class="form-group"> 
+                                <label for="state_id" class="control-label" >Modalidad</label>
+                                  <select class="form-control" id="state_id"name="modalidad">
+                                    <option value='virtual'>virtual</option>
+                                    <option value='presencial'>presencial</option>
+                                  </select>
+                            </div>
+                        <input type="submit" onclick="alert('Usario registrado en el curso')">
+                </form>
+        </div>
+    </div>
+</div>
+<br>
+
+
+{{>footer}}
