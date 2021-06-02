@@ -203,15 +203,10 @@ app.post('/ingresar', (req, res) => {
 			mensaje:"Contraseña no es correcta"			
 			})
 		}	
-			//Para crear las variables de sesión
-			console.log(resultados)
 
-			// let token = jwt.sign({
-   //          	usuario: resultados
-   //      	}, 'virtual-tdea', { expiresIn: '12h' });
-			// console.log(token)
-
-			// localStorage.setItem('token', token);
+		console.log(resultados)	
+		req.session.nombreEst = resultados.nombreEst;
+		req.session.usuario = resultados._id
 			
 			res.render('ingresar', {
 						mensaje : "Bienvenido " + resultados.nomb,

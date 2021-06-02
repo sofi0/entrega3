@@ -22,7 +22,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.set('view engine', 'hbs');
 app.set('views', dirViews);
 hbs.registerPartials(dirPartials);
-app.use(require('./routes/index.js'))
 
 //static
 app.use(session({
@@ -42,6 +41,8 @@ if(req.session.usuario){
 	}	
 	next()
 })
+app.use(require('./routes/index.js'))
+
 
 mongoose.connect(process.env.URLDB,{useNewUrlParser: true, useUnifiedTopology: true},(err, resultado)=>{
 	if (err){
