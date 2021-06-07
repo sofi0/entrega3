@@ -44,7 +44,7 @@ if(req.session.usuario){
 app.use(require('./routes/index.js'))
 
 
-mongoose.connect(process.env.URLDB,{useNewUrlParser: true, useUnifiedTopology: true},(err, resultado)=>{
+mongoose.connect(process.env.URLDB,{useNewUrlParser: true, useUnifiedTopology: true,  useFindAndModify: false},(err, resultado)=>{
 	if (err){
 		return console.log(err)
 

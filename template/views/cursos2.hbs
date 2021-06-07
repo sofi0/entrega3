@@ -1,5 +1,5 @@
 {{>header}}
-
+{{mensaje}}
 
 
 <h3>pagina de estudiantes</h3>
@@ -16,19 +16,22 @@
 	    <div class="form-group">
                 <label for="state_id" class="control-label">curso</label>
                     <select class="form-control" name="idCurso">
-                            {{#each cursosDisponibles}}
+                            {{#each cur}}
                                 <option value='{{this._id}}'>{{this.nombre}}</option>
                             {{/each}}
                     </select>
             <button type="submit" class="btn btn-dark">Mostrar</button>     
         </div>
 
+
 	    <div class="container-md">
+			<input name="idCursoEliminar" type="hidden" value="{{this._id}}">
 				<table class="table">
 				  <thead class="thead-dark">
 				    <tr>
 				      <th scope="col">Curso</th>
 				      <th scope="col">Cedula</th>
+				      <th scope="col">Telefono</th>
 				      <th scope="col">Nombre</th>
 				      <th scope="col">Email</th>
 				      <th scope="col">Modalidad</th>
@@ -36,11 +39,23 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-					{{listar estudiante}}
+
+				  	{{#each estudiante}}
+       				<tr>
+       					<td>{{this.idCursos}}</td>
+       					<td>{{this.ced}}</td>
+       					<td>{{this.tel}}</td>
+				        <td>{{this.nomb}}</td>
+				        <td>{{this.email}}</td>
+				        <td><button type="submit" class="form-control btn btn-primary btn-sm" name="nomb" value="{{this._idCursos}}">eliminar</button></td>
+      				</tr>
+      				{{/each}}
+					
+					<!-- {{listar estudiante}} -->
 				    
 				  </tbody>
 				</table>
-				</div>
+		</div>
 		<br>
 </form>
 

@@ -128,36 +128,67 @@ app.post('/registrar',function(req,res){
 })
  
 
-app.get('/eliminar',function(req,res){
-	Curso.find({}, (err,resultado)=>{
+// app.get('/eliminar',function(req, res){
+	
+// })
+
+app.post('/eliminar',function(req,res){
+	est.find({idCursos:[req.body.idCurso]},(err,resultado)=>{
+		
+		if(err){
+			return console.log(err)
+		}
+
+		Curso.find({}, (err, resul)=>{
+		// console.log(resultado)
+			if (err){
+				return console.log(err)
+			}
+
+				if(req.body.nomb){
+					est.findOneAndUpdate({_id:req.body.nomb},{"$pull": {idCursos:req.body.idCursoEliminar}},{new:true},(err, resu)=>{
+					
+						if (err){
+								return console.log(err)
+							
+								res.render('cursos2',{
+								titulo:'ver curso',	
+								cur:resul,
+								estudiante:resultado,
+								idCurso:req.body.idCurso,
+								nomb:req.body.nomb,
+								mensaje:"Se ha eliminado"
+								})
+						}else {
+								res.render('cursos2',{
+								titulo:'ver curso',	
+								cur:resul,
+								estudiante:resultado,
+								idCurso:req.body.idCurso,
+								nomb:req.body.nomb
+								})
+						}
+					})
+				}
+					console.log(req.body.nomb)
+					console.log(req.body.idCurso)
+					
+				console.log(req.body.idCursoEliminar)
+		})
+		// console.log(resultado,req.body.idCurso)
+	})
+})
+
+app.get('/cursos2',function(req,res){
+	Curso.find({}, (err, resultado)=>{
+		// console.log(resultado)
 		if (err){
 			return console.log(err)
 		}
 	res.render('cursos2',{
 		titulo:'ver curso',	
-		cursosDisponibles:resultado
+		cur:resultado
 	})
-	})
-})
-
-app.post('/eliminar',function(req,res){
-	estu.find({idCursos:[req.body.idCurso]},(err,resultado)=>{
-		if(err){
-			return console.log(err)
-		}
-		console.log(resultado,req.body.idCurso)
-		res.render('cursos2',{
-			titulo:'ver curso',
-			estudiante:resultado,
-			idCurso:req.body.idCurso,
-			nomb:req.body.nomb
-		})
-	})
-})
-
-app.get('/cursos2',function(req,res){
-	res.render('cursos2',{
-		titulo:'cursos2'
 	})
 })
 
@@ -204,7 +235,7 @@ app.post('/ingresar', (req, res) => {
 			})
 		}	
 
-		console.log(resultados)	
+		// console.log(resultados)	
 		req.session.nombreEst = resultados.nombreEst;
 		req.session.usuario = resultados._id
 			

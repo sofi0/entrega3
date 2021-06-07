@@ -1,18 +1,18 @@
 const hbs = require ('hbs');
 const curso = require ('../models/curso');
-const estu = require ('../models/estudiante');
+const est = require ('../models/estudiante');
 
 hbs.registerHelper('listar', (estudiante)=>{
 	if(estudiante){
 		texto="";
-		estudiante.forEach(estu =>{
+		estudiante.forEach(est =>{
 			texto+= `<tr>
-				      <td>${estu.idCursos}</td>
-				      <td>${estu.ced}</td>
-				      <td>${estu.nomb}</td>
-				      <td>${estu.email}</td>
-				      <td>${estu.modalidad}</td>
-				      <td><button type="submit" class="form-control btn btn-danger btn-sm" name="nomb" value="${estu._id}">eliminar</button></td>
+				      <td>${est.idCursos}</td>
+				      <td>${est.ced}</td>
+				      <td>${est.nomb}</td>
+				      <td>${est.email}</td>
+				      <td>${est.modalidad}</td>
+				      <td><button type="submit" class="form-control btn btn-danger btn-sm" name="nomb" value="${est._id}">eliminar</button></td>
 				    </tr>`
 		})
 		return texto
